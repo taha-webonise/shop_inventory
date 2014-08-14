@@ -7,4 +7,5 @@ Gem::Specification.new do |s|
   s.authors	= ["Taha Husain"]
   s.email	= 'taha.husain@weboniselab.com'
   s.files	= ["lib/shop_inventory.rb", "lib/shopkeeper.rb", "lib/user.rb", "lib/shop.rb"]
+  s.executables << "shop_inventory.rb"
 end

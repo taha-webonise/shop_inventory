@@ -12,6 +12,7 @@ module Shop
         print "No records found\n"
       end
     end
+    
     def search_product(product_name)
       if product_name == nil
         abort("Arguement missing: Usage search_product product_name")
