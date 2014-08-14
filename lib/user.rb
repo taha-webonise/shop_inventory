@@ -17,6 +17,16 @@ class User
             else
               entry[3] = entry[3].to_i - 1
               print "Congratulations. Product bought.\n"
+              if File.exist?('orders.csv')
+                CSV.open("orders.csv","a+") do |product|
+                  product << [details[:product_id], details[:user_name], details[:credit_card], details[:cvv]]
+                end
+              else
+                CSV.open("orders.csv","a+") do |product|
+                  product << ["product_id", "user_name", "credit_card", "cvv"]
+                  product << [details[:product_id], details[:user_name], details[:credit_card], details[:cvv]]
+                end
+              end
             end
           end
           product << entry
@@ -24,17 +34,6 @@ class User
       end
     else
       print "No records found.\n"
-    end
-    
-    if File.exist?('orders.csv')
-      CSV.open("orders.csv","a+") do |product|
-        product << [details[:product_id], details[:user_name], details[:credit_card], details[:cvv]]
-      end
-    else
-      CSV.open("orders.csv","a+") do |product|
-        product << ["product_id", "user_name", "credit_card", "cvv"]
-        product << [details[:product_id], details[:user_name], details[:credit_card], details[:cvv]]
-      end
     end
   end
 end
